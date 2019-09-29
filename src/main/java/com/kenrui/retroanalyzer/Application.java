@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.kenrui.retroanalyzer.database.entities.Correlation;
 import com.kenrui.retroanalyzer.reader.RetroReaderCorrelationIds;
+import com.kenrui.retroanalyzer.reader.RetroReaderPointIds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,6 +19,7 @@ import java.util.Scanner;
 public class Application implements CommandLineRunner {
 
     @Autowired private RetroReaderCorrelationIds retroReaderCorrelationIds;
+    @Autowired private RetroReaderPointIds retroReaderPointIds;
 
     public static void main(String[] args) {
 

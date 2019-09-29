@@ -45,11 +45,11 @@ public class RetroReaderPointIdsTest extends AbstractTestNGSpringContextTests {
 
             // Same INPUT_EVENT_ID triggers different OUTPUT_EVENT_IDs
             listOfIdsPointIds = new ArrayList<>();
-            listOfIdsPointIds.add(new TimePointId(getTime(), "1084123482143"));
-            listOfIdsPointIds.add(new TimePointId(getTime(), "1084123482143"));
-            listOfIdsPointIds.add(new TimePointId(getTime(), "1084123482143"));
-            listOfIdsPointIds.add(new TimePointId(getTime(), "1084123482144"));
-            listOfIdsPointIds.add(new TimePointId(getTime(), "1084123482144"));
+            listOfIdsPointIds.add(new TimePointId(getTime(), "40082349"));
+            listOfIdsPointIds.add(new TimePointId(getTime(), "40082350"));
+            listOfIdsPointIds.add(new TimePointId(getTime(), "40082351"));
+            listOfIdsPointIds.add(new TimePointId(getTime(), "40082352"));
+            listOfIdsPointIds.add(new TimePointId(getTime(), "40082353"));
 
             listOfPointIds = new ArrayList();
             correlationIdToLineEntries(listOfIdsPointIds, listOfPointIds);
@@ -91,7 +91,7 @@ public class RetroReaderPointIdsTest extends AbstractTestNGSpringContextTests {
 
     private void correlationIdToLineEntries(List<TimePointId> listOfTimePointIds, ArrayList<ArrayList<String>> listOfLineEntries) {
         for (TimePointId timePointId : listOfTimePointIds) {
-            String pointId = "INPUT_EVENT_ID=" + timePointId.getId();
+            String pointId = "ID=" + timePointId.getId();
             String time = "TIME=" + timePointId.getTime();
 
             listOfLineEntries.add(

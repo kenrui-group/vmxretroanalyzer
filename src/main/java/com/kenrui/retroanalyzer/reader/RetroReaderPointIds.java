@@ -1,6 +1,8 @@
 package com.kenrui.retroanalyzer.reader;
 
+import com.kenrui.retroanalyzer.database.compositekeys.TimeCorrelationId;
 import com.kenrui.retroanalyzer.database.compositekeys.TimePointId;
+import com.kenrui.retroanalyzer.database.entities.Correlation;
 import com.kenrui.retroanalyzer.database.entities.Point;
 import com.kenrui.retroanalyzer.database.repositories.PointRespository;
 
@@ -11,18 +13,19 @@ public class RetroReaderPointIds implements IRetroReaderPointIds {
     private PointRespository pointRespository;
     private File file;
     private String point;
-    private String key;
+    private String time, id;
     private String delimiter;
     private int duplicateKey;
     private int uniqueKey;
     private DecodedMessages decodedMessages;
     private MessageContents messageContents;
 
-    public RetroReaderPointIds(String filename, String delimiter, String point, String key, PointRespository pointRespository) {
+    public RetroReaderPointIds(String filename, String delimiter, String point, String time, String id, PointRespository pointRespository) {
         this.file = new File(filename);
         this.delimiter = delimiter;
         this.point = point;
-        this.key = key;
+        this.time = time;
+        this.id = id;
         this.duplicateKey = 0;
         this.uniqueKey = 0;
         this.decodedMessages = new DecodedMessages();
@@ -59,18 +62,12 @@ public class RetroReaderPointIds implements IRetroReaderPointIds {
                     messageContents.addFieldValuePair(key, value);
                 }
 
-                String keyValueForThisLine = messageContents.getField(key);
+                String timeParsed = messageContents.getField(time) == null ? "null" : messageContents.getField(time);
+                String id1Parsed = messageContents.getField(id) == null ? "null" : messageContents.getField(id);
+                TimePointId timePointId = new TimePointId(timeParsed, id1Parsed);
+                Point point = new Point(timePointId, this.point, messageContents.toString());
 
-                if (decodedMessages.hasKeyValueForTheLine(keyValueForThisLine)) {
-                    duplicateKey++;
-                    System.out.println("Duplicate keys detected: " + keyValueForThisLine + ".  Line contents: " + messageContents.toString());
-                } else {
-                    uniqueKey++;
-                    decodedMessages.addNewMessage(keyValueForThisLine, messageContents);
-                }
-
-                System.out.println("Point " + point + " has " + duplicateKey + " duplicate keys " + " and " + uniqueKey + " unique keys");
-            }
+                pointRespository.save(point);}
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

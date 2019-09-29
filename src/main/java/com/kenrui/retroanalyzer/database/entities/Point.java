@@ -25,10 +25,17 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Point {
     @EmbeddedId
     public TimePointId timePointId;
 
+    public String point;
+
     public String message;
+
+    public Point(TimePointId timePointId, String point, String message) {
+        this.timePointId = timePointId;
+        this.point = point;
+        this.message = message;
+    }
 }
