@@ -2,10 +2,14 @@ package com.kenrui.retroanalyzer.reader;
 
 import com.kenrui.retroanalyzer.database.compositekeys.TimeCorrelationId;
 import com.kenrui.retroanalyzer.database.entities.Correlation;
+import com.kenrui.retroanalyzer.database.entities.Point;
 import com.kenrui.retroanalyzer.database.repositories.CorrelationRepository;
 
+import java.awt.print.Book;
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RetroReaderCorrelationIds implements IRetroReaderCorrelationIds {
     private CorrelationRepository correlationRepository;
@@ -107,5 +111,19 @@ public class RetroReaderCorrelationIds implements IRetroReaderCorrelationIds {
     @Override
     public long getLinesRead() {
         return correlationRepository.count();
+    }
+
+    @Override
+    public Map<Correlation,Point> getListOfCorrelatedPoints() {
+        Map<Correlation,Point> mapOfCorrelatedPoints = new HashMap<>();
+
+        List<Object[]> results = correlationRepository.findCorrelatedPoints();
+        results.stream().forEach((record) -> {
+            Correlation correlation = (Correlation)record[0];
+            Point point = (Point)record[1];
+            mapOfCorrelatedPoints.put(correlation, point);
+        });
+
+        return mapOfCorrelatedPoints;
     }
 }

@@ -34,7 +34,7 @@ import java.sql.Time;
                 resultSetMapping = "TimeCorrelationIdResult"),
         @NamedNativeQuery(
                 name = "Correlation.findCorrelatedPoints",
-                query = "SELECT C.TIME TIME_C, C.ID1 ID1_C, C.ID2 ID2_C, P.TIME TIME_P, P.ID ID_P FROM CORRELATION C LEFT JOIN POINT P ON C.ID2 = P.ID AND (C.ID2 <> '' AND C.ID2 IS NOT NULL) AND C.POINT = 'POINT25' AND P.POINT = 'POINT5WA'",
+                query = "SELECT C.TIME AS TIME_C, C.ID1 AS ID1_C, C.ID2 AS ID2_C, P.TIME AS TIME_P, P.ID AS ID_P FROM CORRELATION C LEFT JOIN POINT P ON C.ID2 = P.ID AND (C.ID2 <> '' AND C.ID2 IS NOT NULL) AND C.POINT = 'POINT25' AND P.POINT = 'POINT5WA'",
                 resultSetMapping = "CorrelatedResults")})
 @SqlResultSetMappings({
         @SqlResultSetMapping(

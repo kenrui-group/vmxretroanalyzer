@@ -17,4 +17,6 @@ public interface CorrelationRepository extends JpaRepository<Correlation, Long> 
 
     List<TimeCorrelationId> findCorrelationIdsForOneTickToNoQuote();
 
+    List<Object[]> findCorrelatedPoints();
+
 }

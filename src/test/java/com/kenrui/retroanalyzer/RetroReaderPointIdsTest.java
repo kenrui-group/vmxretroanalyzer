@@ -21,84 +21,25 @@ import java.util.List;
 @SpringBootTest(classes = Application.class)
 public class RetroReaderPointIdsTest extends AbstractTestNGSpringContextTests {
 
-    @Autowired
-    private RetroReaderPointIds retroReaderPointIds;
-
-    private String filename = "C:\\Users\\Titus\\Desktop\\point5wa.txt";
-    private BufferedReader bufferedReader;
-    private List<List<String>> mockRetroFileContent;
+    // SUT
+    @Autowired private RetroReaderPointIds retroReaderPointIds;
     private int lineCount;
 
-    private ArrayList<ArrayList<String>> listOfPointIds;
     private List<TimePointId> listOfIdsPointIds;
 
+    private RetroReaderTestGenerator retroReaderTestGenerator;
 
-    // SUT
-    private RetroReaderPointIds retroReaderPointIdsMock;
 
     @BeforeClass
     public void setup() {
 
-        // Generate new retro file and check number of lines added
-        try {
-            FileWriter fileWriter = new FileWriter(filename);
+        retroReaderTestGenerator = new RetroReaderTestGenerator();
+        retroReaderTestGenerator.generatePointIds();
 
-            // Same INPUT_EVENT_ID triggers different OUTPUT_EVENT_IDs
-            listOfIdsPointIds = new ArrayList<>();
-            listOfIdsPointIds.add(new TimePointId(getTime(), "40082349"));
-            listOfIdsPointIds.add(new TimePointId(getTime(), "40082350"));
-            listOfIdsPointIds.add(new TimePointId(getTime(), "40082351"));
-            listOfIdsPointIds.add(new TimePointId(getTime(), "40082352"));
-            listOfIdsPointIds.add(new TimePointId(getTime(), "40082353"));
+        lineCount = retroReaderTestGenerator.getLineCountPointIds();
+        listOfIdsPointIds = retroReaderTestGenerator.getListOfIdsPointIds();
 
-            listOfPointIds = new ArrayList();
-            correlationIdToLineEntries(listOfIdsPointIds, listOfPointIds);
-
-            mockRetroFileContent = new ArrayList<>();
-            mockRetroFileContent.addAll(listOfPointIds);
-
-            for (List<String> row : mockRetroFileContent) {
-                fileWriter.append(String.join(",", row));
-                fileWriter.append("\n");
-            }
-
-            fileWriter.flush();
-            fileWriter.close();
-
-            FileReader fileReader = new FileReader(new File(filename));
-            bufferedReader = new BufferedReader(fileReader);
-            while (bufferedReader.readLine() != null) {
-                lineCount++;
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Read in test file specifying field name OUTPUT_EVENT_ID as key
-        retroReaderPointIdsMock = Mockito.spy(retroReaderPointIds);
-        retroReaderPointIdsMock.parseFile();
-    }
-
-    private String getTime() {
-        return getCurrentLocalDateTimeStamp();
-    }
-
-    public String getCurrentLocalDateTimeStamp() {
-        return LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-    }
-
-    private void correlationIdToLineEntries(List<TimePointId> listOfTimePointIds, ArrayList<ArrayList<String>> listOfLineEntries) {
-        for (TimePointId timePointId : listOfTimePointIds) {
-            String pointId = "ID=" + timePointId.getId();
-            String time = "TIME=" + timePointId.getTime();
-
-            listOfLineEntries.add(
-                    new ArrayList(Arrays.asList(time, "IP.SRC=10.223.3.7", "IP.DST=10.223.3.8", pointId))
-            );
-
-        };
+        retroReaderPointIds.parseFile();
     }
 
     @Test
@@ -108,7 +49,7 @@ public class RetroReaderPointIdsTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void testOneTickToMultipleQuotes() {
+    public void testGetListOfPointIds() {
         Assert.assertEquals(retroReaderPointIds.getListOfPointIds(), listOfIdsPointIds);
     }
 
