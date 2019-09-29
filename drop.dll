@@ -1,0 +1,1204 @@
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
+
+    drop table Correlation if exists
+
+    drop table Point if exists
