@@ -3,6 +3,7 @@ package com.kenrui.retroanalyzer.reader;
 import com.kenrui.retroanalyzer.database.compositekeys.TimeCorrelationId;
 import com.kenrui.retroanalyzer.database.compositekeys.TimePointId;
 import com.kenrui.retroanalyzer.database.entities.Correlation;
+import com.kenrui.retroanalyzer.database.entities.RepeatingCorrelationIdGroups;
 import com.kenrui.retroanalyzer.database.repositories.CorrelationRepository;
 
 import java.io.*;
@@ -133,6 +134,26 @@ public class RetroReaderCorrelationIds implements IRetroReaderCorrelationIds {
 
     public List<TimeCorrelationId> findCorrelations() {
         return correlationRepository.findCorrelations();
+    }
+
+    public List<RepeatingCorrelationIdGroups> findRepeatingCorrelationIdGroups() {
+        return correlationRepository.findRepeatingCorrelationIdGroups();
+    }
+
+    public Integer findNumberOfRepeatingCorrelationIdGroups() {
+        return correlationRepository.findNumberOfRepeatingCorrelationIdGroups();
+    }
+
+    public Integer findNumberOfPointsFoundFromRepeatingCorrelationIdGroups() {
+        return correlationRepository.findNumberOfPointsFoundFromRepeatingCorrelationIdGroups();
+    }
+
+    public Integer checkIfAllOneTickToMultipleQuotesAreCorrelatable() {
+        return correlationRepository.checkIfAllOneTickToMultipleQuotesAreCorrelatable();
+    }
+
+    public Integer checkIfAllOneTickToOneQuoteAreCorrelatable() {
+        return correlationRepository.checkIfAllOneTickToOneQuoteAreCorrelatable();
     }
 
 }

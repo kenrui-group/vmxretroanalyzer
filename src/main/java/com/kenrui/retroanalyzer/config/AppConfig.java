@@ -1,8 +1,10 @@
 package com.kenrui.retroanalyzer.config;
 
 import com.kenrui.retroanalyzer.database.config.JPAConfig;
+import com.kenrui.retroanalyzer.database.entities.RepeatingCorrelationIdGroups;
 import com.kenrui.retroanalyzer.database.repositories.CorrelationRepository;
 import com.kenrui.retroanalyzer.database.repositories.PointRespository;
+import com.kenrui.retroanalyzer.database.repositories.RepeatingCorrelationGroupsRepository;
 import com.kenrui.retroanalyzer.reader.RetroReaderCorrelationIds;
 import com.kenrui.retroanalyzer.reader.RetroReaderPointIds;
 import com.typesafe.config.Config;

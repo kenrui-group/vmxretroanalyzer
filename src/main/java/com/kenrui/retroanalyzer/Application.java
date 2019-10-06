@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.kenrui.retroanalyzer.database.compositekeys.TimeCorrelationId;
 import com.kenrui.retroanalyzer.database.compositekeys.TimePointId;
 import com.kenrui.retroanalyzer.database.entities.Correlation;
+import com.kenrui.retroanalyzer.database.entities.Point;
+import com.kenrui.retroanalyzer.database.entities.RepeatingCorrelationIdGroups;
+import com.kenrui.retroanalyzer.database.repositories.RepeatingCorrelationGroupsRepository;
 import com.kenrui.retroanalyzer.reader.RetroReaderCorrelationIds;
 import com.kenrui.retroanalyzer.reader.RetroReaderPointIds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 //http://zetcode.com/springboot/commandlinerunner/
 @SpringBootApplication
@@ -25,6 +29,8 @@ public class Application implements CommandLineRunner {
     private RetroReaderCorrelationIds retroReaderCorrelationIds;
     @Autowired
     private RetroReaderPointIds retroReaderPointIds;
+    @Autowired
+    private RepeatingCorrelationGroupsRepository repeatingCorrelationGroupsRepository;
 
     private ObjectMapper objectMapper;
 
@@ -45,27 +51,68 @@ public class Application implements CommandLineRunner {
         linesRead = retroReaderPointIds.getLinesRead();
         System.out.println("Read " + linesRead + " lines from point retro.");
 
+        Integer repeatingLines = retroReaderCorrelationIds.findNumberOfRepeatingCorrelationIdGroups();
+        System.out.println("Found " + repeatingLines + " lines of repeating Correlation Id Groups (id1 and id2)");
+
+        List<RepeatingCorrelationIdGroups> repeatingCorrelationIdGroups = retroReaderCorrelationIds.findRepeatingCorrelationIdGroups();
+        System.out.println("Of all the repeating lines, it can be grouped into " + repeatingCorrelationIdGroups.size() + " Correlation Id Groups (id1 and id2) after deduplication");
+        System.out.println("The repeating Correlation Id Group are:");
+        System.out.println(objectMapper.writeValueAsString(repeatingCorrelationIdGroups));
+
         List<TimeCorrelationId> timeCorrelationIds = retroReaderCorrelationIds.findCorrelationIdsNotInPoint();
         System.out.println("Found following " + timeCorrelationIds.size() + " correlation ids not correlated.");
         System.out.println(objectMapper.writeValueAsString(timeCorrelationIds));
 
-        Map<TimeCorrelationId, TimePointId> correlatePoints = retroReaderCorrelationIds.correlatePoints();
-        System.out.println("Attempt to correlate returned " + correlatePoints.size() + " points (may include correlation ids that doesn't have points to correlate with.");
-
+        System.out.println();
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("Number of Correlation Ids Found when Excluding repeating Correlation Id Groups (id1 and id2)");
+        System.out.println("---------------------------------------------------------------------------------");
         List<TimeCorrelationId> oneTickToMultipleQuotes = retroReaderCorrelationIds.getListOfCorrelationIdsForOneTickToMultipleQuotes();
-        System.out.println("Found " + oneTickToMultipleQuotes.size() + " one tick to multiple quotes.");
+        Integer oneTickToMultipleQuotesCorrelatable = retroReaderCorrelationIds.checkIfAllOneTickToMultipleQuotesAreCorrelatable();
+
+        System.out.println("One Tick to Multiple Quotes:  " + oneTickToMultipleQuotes.size());
+        if (oneTickToMultipleQuotes.size() == oneTickToMultipleQuotesCorrelatable.intValue()) {
+            System.out.println("\t All correlated: Y");
+        } else {
+            System.out.println("\t Only correlated: " + oneTickToMultipleQuotesCorrelatable.intValue());
+        }
+
 
         List<TimeCorrelationId> oneTickToOneQuote = retroReaderCorrelationIds.getListOfCorrelationIdsForOneTickToOneQuote();
-        System.out.println("Found " + oneTickToOneQuote.size() + " one tick to one quote.");
+        Integer oneTickToOneQuoteCorrelatable = retroReaderCorrelationIds.checkIfAllOneTickToOneQuoteAreCorrelatable();
+
+        System.out.println("One Tick to One Quote:  " + oneTickToOneQuote.size());
+        if (oneTickToOneQuote.size() == oneTickToOneQuoteCorrelatable.intValue()) {
+            System.out.println("\t All correlated: Y");
+        } else {
+            System.out.println("\t Only correlated: " + oneTickToOneQuoteCorrelatable.intValue());
+        }
+
 
         List<TimeCorrelationId> differentTicksToSameQuote = retroReaderCorrelationIds.getListOfCorrelationIdsForDifferentTicksToSameQuote();
-        System.out.println("Found " + differentTicksToSameQuote.size() + " different ticks to same quote, or repeated correlation ids.");
+        System.out.println("Different Tick to Same Quote:  " + differentTicksToSameQuote.size());
 
         List<TimeCorrelationId> oneTickToNoQuote = retroReaderCorrelationIds.getListOfCorrelationIdsForOneTickToNoQuote();
-        System.out.println("Found " + oneTickToNoQuote.size() + " one tick to no quote.");
+        System.out.println("One Tick to No Quote:  " + oneTickToNoQuote.size());
 
-        List<TimeCorrelationId> correlatedPoints = retroReaderCorrelationIds.correlatedPoints();
-        System.out.println("Found " + correlatedPoints.size() + " points correlated.");
+
+        System.out.println();
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("Number of Correlation Ids Found when Including repeating Correlation Id Groups (id1 and id2)");
+        System.out.println("---------------------------------------------------------------------------------");
+        Integer numberOfPointsFoundFromRepeatingCorrelationIdGroups = retroReaderCorrelationIds.findNumberOfPointsFoundFromRepeatingCorrelationIdGroups();
+        System.out.println("One Tick to Multiple Quotes:  " + numberOfPointsFoundFromRepeatingCorrelationIdGroups );
+        System.out.println("\t All correlated: Y");
+
+        System.out.println();
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("Total correlated points");
+        System.out.println("---------------------------------------------------------------------------------");
+        Integer totalLines = oneTickToMultipleQuotes.size() + oneTickToOneQuote.size() + numberOfPointsFoundFromRepeatingCorrelationIdGroups;
+        System.out.println("One Tick to Multiple Quotes + One Tick to One Quote + One Tick to One Quote (Deduplicated Correlation Id Groups) = " + totalLines + " points.");
+
+//        List<TimeCorrelationId> correlatedPoints = retroReaderCorrelationIds.correlatedPoints();
+//        System.out.println("Found " + correlatedPoints.size() + " points correlated.");
 
 //        Scanner input = new Scanner(System.in);
 //        String jibberish = input.next();
