@@ -192,7 +192,7 @@ public class RetroReaderTestGenerator {
     private void pointIdToLineEntries(List<TimePointId> listOfTimePointIds, ArrayList<ArrayList<String>> listOfLineEntries) {
         for (TimePointId timePointId : listOfTimePointIds) {
             String pointId = "ID=" + timePointId.getId();
-            String time = "TIME=" + timePointId.getTime();
+            String time = "TIME=" + timePointId.getTimep();
 
             listOfLineEntries.add(
                     new ArrayList(Arrays.asList(time, "IP.SRC=10.223.3.7", "IP.DST=10.223.3.8", pointId))

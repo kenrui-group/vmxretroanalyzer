@@ -1,15 +1,12 @@
 package com.kenrui.retroanalyzer.reader;
 
 import com.kenrui.retroanalyzer.database.compositekeys.TimeCorrelationId;
+import com.kenrui.retroanalyzer.database.compositekeys.TimePointId;
 import com.kenrui.retroanalyzer.database.entities.Correlation;
-import com.kenrui.retroanalyzer.database.entities.Point;
 import com.kenrui.retroanalyzer.database.repositories.CorrelationRepository;
 
-import java.awt.print.Book;
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RetroReaderCorrelationIds implements IRetroReaderCorrelationIds {
     private CorrelationRepository correlationRepository;
@@ -69,7 +66,8 @@ public class RetroReaderCorrelationIds implements IRetroReaderCorrelationIds {
                 String id1Parsed = messageContents.getField(id1) == null ? "null" : messageContents.getField(id1);
                 String id2Parsed = messageContents.getField(id2) == null ? "null" : messageContents.getField(id2);
                 TimeCorrelationId timeCorrelationId = new TimeCorrelationId(timeParsed, id1Parsed, id2Parsed);
-                Correlation correlation = new Correlation(timeCorrelationId, this.point, messageContents.toString());
+
+                Correlation correlation = new Correlation(timeCorrelationId, this.point, messageContents.toString().substring(1, Math.min(messageContents.toString().length(), 3000)));
 
                 correlationRepository.save(correlation);
             }
@@ -113,17 +111,28 @@ public class RetroReaderCorrelationIds implements IRetroReaderCorrelationIds {
         return correlationRepository.count();
     }
 
-    @Override
-    public Map<Correlation,Point> getListOfCorrelatedPoints() {
-        Map<Correlation,Point> mapOfCorrelatedPoints = new HashMap<>();
+    public List<TimeCorrelationId> findCorrelationIdsNotInPoint() {
+        return correlationRepository.findCorrelationIdsNotInPoint();
+    }
 
-        List<Object[]> results = correlationRepository.findCorrelatedPoints();
+    public Map<TimeCorrelationId,TimePointId> correlatePoints() {
+        Map<TimeCorrelationId,TimePointId> mapOfCorrelatedPoints = new HashMap<>();
+
+        List<Object[]> results = correlationRepository.correlatePoints();
         results.stream().forEach((record) -> {
-            Correlation correlation = (Correlation)record[0];
-            Point point = (Point)record[1];
-            mapOfCorrelatedPoints.put(correlation, point);
+            TimeCorrelationId timeCorrelationId = (TimeCorrelationId)record[0];
+            TimePointId timePointId = (TimePointId)record[1];
+            mapOfCorrelatedPoints.put(timeCorrelationId, timePointId);
         });
-
         return mapOfCorrelatedPoints;
     }
+
+    public List<TimeCorrelationId> correlatedPoints() {
+        return correlationRepository.correlatedPoints();
+    }
+
+    public List<TimeCorrelationId> findCorrelations() {
+        return correlationRepository.findCorrelations();
+    }
+
 }

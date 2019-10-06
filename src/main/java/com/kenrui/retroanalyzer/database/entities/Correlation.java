@@ -33,9 +33,22 @@ import java.sql.Time;
                 query = "SELECT TIME, ID1, '' AS ID2 FROM CORRELATION WHERE POINT = 'POINT25' AND (ID2 = '' OR ID2 IS NULL)",
                 resultSetMapping = "TimeCorrelationIdResult"),
         @NamedNativeQuery(
-                name = "Correlation.findCorrelatedPoints",
-                query = "SELECT C.TIME AS TIME_C, C.ID1 AS ID1_C, C.ID2 AS ID2_C, P.TIME AS TIME_P, P.ID AS ID_P FROM CORRELATION C LEFT JOIN POINT P ON C.ID2 = P.ID AND (C.ID2 <> '' AND C.ID2 IS NOT NULL) AND C.POINT = 'POINT25' AND P.POINT = 'POINT5WA'",
-                resultSetMapping = "CorrelatedResults")})
+                name = "Correlation.findCorrelationIdsNotInPoint",
+                query = "SELECT * FROM CORRELATION WHERE ID2 NOT IN (SELECT ID FROM POINT) AND ID2 <> '' AND ID2 IS NOT NULL",
+                resultSetMapping = "TimeCorrelationIdResult"),
+        @NamedNativeQuery(
+                name = "Correlation.correlatePoints",
+                query = "SELECT C.TIME AS TIME1, C.ID1 AS ID1_C, C.ID2 AS ID2_C, P.TIMEP AS TIMEP, P.ID AS ID_P FROM CORRELATION C LEFT JOIN POINT P ON C.ID2 = P.ID WHERE (C.ID2 <> '' AND C.ID2 IS NOT NULL) AND C.POINT = 'POINT25'",
+                resultSetMapping = "CorrelationResults"),
+        @NamedNativeQuery(
+                name = "Correlation.correlatedPoints",
+                query = "SELECT C.TIME AS TIME1, C.ID1 AS ID1_C, C.ID2 AS ID2_C, P.TIMEP AS TIMEP, P.ID AS ID_P FROM CORRELATION C INNER JOIN POINT P ON C.ID2 = P.ID WHERE (C.ID2 <> '' AND C.ID2 IS NOT NULL) AND C.POINT = 'POINT25'",
+                resultSetMapping = "CorrelationResults"),
+        @NamedNativeQuery(
+                name = "Correlation.findCorrelations",
+                query = "SELECT C.TIME AS TIME_C, C.ID1 AS ID1_C, C.ID2 AS ID2_C FROM CORRELATION C ",
+                resultSetMapping = "TimeCorrelationIdResult")
+})
 @SqlResultSetMappings({
         @SqlResultSetMapping(
                 name = "TimeCorrelationIdResult",
@@ -44,25 +57,26 @@ import java.sql.Time;
                         columns = {
                                 @ColumnResult(name = "time"),
                                 @ColumnResult(name = "id1"),
-                                @ColumnResult(name = "id2")})),
+                                @ColumnResult(name = "id2")
+                        }
+                )
+        ),
         @SqlResultSetMapping(
-                name = "CorrelatedResults",
-                entities = {
-                        @EntityResult(
-                                entityClass = com.kenrui.retroanalyzer.database.entities.Correlation.class,
-                                fields = {
-                                        @FieldResult(name = "time", column = "TIME_C"),
-                                        @FieldResult(name = "id1", column = "ID1_C"),
-                                        @FieldResult(name = "id2", column = "ID2_C")
-                                }
-                        ),
-                        @EntityResult(
-                                entityClass = com.kenrui.retroanalyzer.database.entities.Point.class,
-                                fields = {
-                                        @FieldResult(name = "time", column = "TIME_P"),
-                                        @FieldResult(name = "id", column = "ID_P")
-                                }
-                        )
+                name = "CorrelationResults",
+                classes = {
+                        @ConstructorResult(
+                                targetClass = com.kenrui.retroanalyzer.database.compositekeys.TimeCorrelationId.class,
+                                columns = {
+                                        @ColumnResult(name = "time"),
+                                        @ColumnResult(name = "id1"),
+                                        @ColumnResult(name = "id2")
+                                }),
+                        @ConstructorResult(
+                                targetClass = com.kenrui.retroanalyzer.database.compositekeys.TimePointId.class,
+                                columns = {
+                                        @ColumnResult(name = "timep"),
+                                        @ColumnResult(name = "id")
+                                })
                 }
         )
 })
@@ -76,6 +90,7 @@ public class Correlation {
 
     public String point;
 
+    @Column(length = 3000)
     public String message;
 
     public Correlation(TimeCorrelationId timeCorrelationId, String point, String message) {

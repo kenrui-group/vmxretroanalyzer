@@ -65,7 +65,7 @@ public class RetroReaderPointIds implements IRetroReaderPointIds {
                 String timeParsed = messageContents.getField(time) == null ? "null" : messageContents.getField(time);
                 String id1Parsed = messageContents.getField(id) == null ? "null" : messageContents.getField(id);
                 TimePointId timePointId = new TimePointId(timeParsed, id1Parsed);
-                Point point = new Point(timePointId, this.point, messageContents.toString());
+                Point point = new Point(timePointId, this.point, messageContents.toString().substring(1, Math.min(messageContents.toString().length(), 3000)));
 
                 pointRespository.save(point);}
 

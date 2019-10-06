@@ -11,14 +11,14 @@ import javax.persistence.*;
 
 @NamedNativeQuery(
         name = "Point.findPointIds",
-        query = "SELECT TIME, ID FROM POINT",
+        query = "SELECT TIMEP, ID FROM POINT",
         resultSetMapping = "TimePointIdResult")
 @SqlResultSetMapping(
         name = "TimePointIdResult",
         classes = @ConstructorResult(
                 targetClass = com.kenrui.retroanalyzer.database.compositekeys.TimePointId.class,
                 columns = {
-                        @ColumnResult(name = "time"),
+                        @ColumnResult(name = "timep"),
                         @ColumnResult(name = "id")
                 }))
 @Entity
@@ -31,6 +31,7 @@ public class Point {
 
     public String point;
 
+    @Column(length = 3000)
     public String message;
 
     public Point(TimePointId timePointId, String point, String message) {

@@ -13,11 +13,11 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 public class TimePointId implements Serializable {
-    protected String time;
+    protected String timep;
     protected String id;
 
-    public TimePointId(String time, String id) {
-        this.time = time;
+    public TimePointId(String timep, String id) {
+        this.timep = timep;
         this.id = id;
     }
 
@@ -29,11 +29,11 @@ public class TimePointId implements Serializable {
             return false;
 
         TimePointId that = (TimePointId) o;
-        return Objects.equals(time, that.time) && Objects.equals(id, that.id);
+        return Objects.equals(timep, that.timep) && Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(time, id);
+        return Objects.hash(timep, id);
     }
 }
