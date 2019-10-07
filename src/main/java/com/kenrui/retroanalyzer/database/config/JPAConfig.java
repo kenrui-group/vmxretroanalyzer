@@ -2,6 +2,7 @@ package com.kenrui.retroanalyzer.database.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +22,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-@Configuration
+@SpringBootConfiguration
 @EnableJpaRepositories(basePackages = "com.kenrui.retroanalyzer.database.repositories")
 @EnableTransactionManagement
 @PropertySource("classpath:database.properties")

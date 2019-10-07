@@ -30,10 +30,16 @@ import java.sql.Time;
         @NamedNativeQuery(
                 name = "Correlation.findCorrelationIdsForOneTickToOneQuote",
                 // One tick to one quote excluding those that have repeating correlation id group (id1 and id2)
-                query = "SELECT TIME, ID1, ID2 " +
-                        "FROM CORRELATION " +
-                        "WHERE ID1 IN (SELECT ID1 FROM CORRELATION WHERE POINT = 'POINT25' GROUP BY ID1 HAVING COUNT(ID2) = 1) " +
-                        "AND ID2 NOT IN (SELECT ID2 FROM CORRELATION WHERE ID2 <> '' AND ID2 IS NOT NULL GROUP BY ID1, ID2 HAVING COUNT(*) > 1)",
+//                query = "SELECT TIME, ID1, ID2 " +
+//                        "FROM CORRELATION " +
+//                        "WHERE ID1 IN (SELECT ID1 FROM CORRELATION WHERE POINT = 'POINT25' GROUP BY ID1 HAVING COUNT(ID2) = 1) " +
+//                        "AND ID2 NOT IN (SELECT ID2 FROM CORRELATION WHERE ID2 <> '' AND ID2 IS NOT NULL GROUP BY ID1, ID2 HAVING COUNT(*) > 1)",
+                query = "SELECT  TIME, ID1, ID2\n" +
+                        "FROM  CORRELATION\n" +
+                        "WHERE  ID1 IN (SELECT ID1 FROM CORRELATION WHERE POINT = 'POINT25' GROUP BY ID1 HAVING COUNT(ID2) = 1)\n" +
+                        "  AND ID2 NOT IN (SELECT ID2 FROM CORRELATION WHERE ID2 <> '' AND ID2 IS NOT NULL GROUP BY ID2 HAVING COUNT(*) > 1)\n" +
+                        "  AND ID2 NOT IN (SELECT ID2 FROM CORRELATION WHERE ID2 <> '' AND ID2 IS NOT NULL GROUP BY ID1, ID2 HAVING COUNT(*) > 1)\n" +
+                        "  AND ID2 <> '' AND ID2 IS NOT NULL",
                 resultSetMapping = "TimeCorrelationIdResult"),
         @NamedNativeQuery(
                 name = "Correlation.checkIfAllOneTickToOneQuoteAreCorrelatable",
@@ -136,29 +142,29 @@ import java.sql.Time;
         @SqlResultSetMapping(
                 name = "RepeatingCorrelationIdGroups",
                 classes = @ConstructorResult(
-                                targetClass = com.kenrui.retroanalyzer.database.compositekeys.RepeatingCorrelationId.class,
-                                columns = {
-                                        @ColumnResult(name = "id1"),
-                                        @ColumnResult(name = "id2"),
-                                        @ColumnResult(name = "repeats", type = Integer.class)
-                                })
+                        targetClass = com.kenrui.retroanalyzer.database.compositekeys.RepeatingCorrelationId.class,
+                        columns = {
+                                @ColumnResult(name = "id1"),
+                                @ColumnResult(name = "id2"),
+                                @ColumnResult(name = "repeats", type = Integer.class)
+                        })
         ),
         @SqlResultSetMapping(
                 name = "NumberFound",
                 columns = {
-                        @ColumnResult(name="FOUND")
+                        @ColumnResult(name = "FOUND")
                 }
         ),
         @SqlResultSetMapping(
                 name = "NumberOfRepeatingCorrelationIdGroups",
                 columns = {
-                        @ColumnResult(name="REPEATS")
+                        @ColumnResult(name = "REPEATS")
                 }
         ),
         @SqlResultSetMapping(
                 name = "NumberOfPointsFoundFromRepeatingCorrelationIdGroups",
                 columns = {
-                        @ColumnResult(name="CORRELATED_VIA_DEDUPLICATED_CORRELATION_ID_GROUPS")
+                        @ColumnResult(name = "CORRELATED_VIA_DEDUPLICATED_CORRELATION_ID_GROUPS")
                 }
         )
 })

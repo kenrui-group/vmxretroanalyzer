@@ -2,7 +2,6 @@ package com.kenrui.retroanalyzer;
 
 import com.kenrui.retroanalyzer.database.compositekeys.TimeCorrelationId;
 import com.kenrui.retroanalyzer.database.compositekeys.TimePointId;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -12,8 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RetroReaderTestGenerator {
-    private String filenameCorrelationPointIds = "C:\\Users\\Titus\\Desktop\\point25.txt";
-    private String filenamePointIds = "C:\\Users\\Titus\\Desktop\\point5wa.txt";
+    private String filenameCorrelationPointIds;
+    private String filenamePointIds;
+    private String delimiter, tickIdFieldName, quoteIdFieldName, timeFieldName, pointIdFieldName;
     private BufferedReader bufferedReader;
     private List<List<String>> mockRetroFileContent;
     private int lineCountCorrelationIds, lineCountPointIds;
@@ -30,6 +30,16 @@ public class RetroReaderTestGenerator {
     private ArrayList<ArrayList<String>> listOfPointIds;
 
     private List<TimePointId> listOfIdsPointIds;
+
+    public RetroReaderTestGenerator(String filenameCorrelationPointIds, String filenamePointIds, String delimiter, String tickIdFieldName, String quoteIdFieldName, String timeFieldName, String pointIdFieldName) {
+        this.filenameCorrelationPointIds = filenameCorrelationPointIds;
+        this.filenamePointIds = filenamePointIds;
+        this.delimiter = delimiter;
+        this.tickIdFieldName = tickIdFieldName;
+        this.quoteIdFieldName = quoteIdFieldName;
+        this.timeFieldName = timeFieldName;
+        this.pointIdFieldName = pointIdFieldName;
+    }
 
     public int getLineCountCorrelationIds() {
         return lineCountCorrelationIds;
@@ -110,7 +120,7 @@ public class RetroReaderTestGenerator {
             mockRetroFileContent.addAll(listOfOneTickToNoQuote);
 
             for (List<String> row : mockRetroFileContent) {
-                fileWriter.append(String.join(",", row));
+                fileWriter.append(String.join(delimiter, row));
                 fileWriter.append("\n");
             }
 
@@ -148,7 +158,7 @@ public class RetroReaderTestGenerator {
             mockRetroFileContent.addAll(listOfPointIds);
 
             for (List<String> row : mockRetroFileContent) {
-                fileWriter.append(String.join(",", row));
+                fileWriter.append(String.join(delimiter, row));
                 fileWriter.append("\n");
             }
 
@@ -175,11 +185,11 @@ public class RetroReaderTestGenerator {
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
     }
 
-    private static void correlationIdToLineEntries(List<TimeCorrelationId> listOfTimeCorrelationIds, ArrayList<ArrayList<String>> listOfLineEntries) {
+    private void correlationIdToLineEntries(List<TimeCorrelationId> listOfTimeCorrelationIds, ArrayList<ArrayList<String>> listOfLineEntries) {
         for (TimeCorrelationId timeCorrelationId : listOfTimeCorrelationIds) {
-            String tickId = "INPUT_EVENT_ID=" + timeCorrelationId.getId1();
-            String quoteId = "OUTPUT_EVENT_ID=" + timeCorrelationId.getId2();
-            String time = "TIME=" + timeCorrelationId.getTime();
+            String tickId = tickIdFieldName + "=" + timeCorrelationId.getId1();
+            String quoteId = quoteIdFieldName + "=" + timeCorrelationId.getId2();
+            String time = timeFieldName + "=" + timeCorrelationId.getTime();
 
             listOfLineEntries.add(
                     new ArrayList(Arrays.asList(time, "IP.SRC=10.223.3.7", "IP.DST=10.223.3.8", tickId, quoteId))
@@ -191,8 +201,8 @@ public class RetroReaderTestGenerator {
 
     private void pointIdToLineEntries(List<TimePointId> listOfTimePointIds, ArrayList<ArrayList<String>> listOfLineEntries) {
         for (TimePointId timePointId : listOfTimePointIds) {
-            String pointId = "ID=" + timePointId.getId();
-            String time = "TIME=" + timePointId.getTimep();
+            String pointId = pointIdFieldName + "=" + timePointId.getId();
+            String time = timeFieldName + "=" + timePointId.getTimep();
 
             listOfLineEntries.add(
                     new ArrayList(Arrays.asList(time, "IP.SRC=10.223.3.7", "IP.DST=10.223.3.8", pointId))

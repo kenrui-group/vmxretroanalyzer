@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
@@ -25,12 +26,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-    @Autowired
-    private RetroReaderCorrelationIds retroReaderCorrelationIds;
-    @Autowired
-    private RetroReaderPointIds retroReaderPointIds;
-    @Autowired
-    private RepeatingCorrelationGroupsRepository repeatingCorrelationGroupsRepository;
+    @Autowired private RetroReaderCorrelationIds retroReaderCorrelationIds;
+    @Autowired private RetroReaderPointIds retroReaderPointIds;
+    @Autowired private RepeatingCorrelationGroupsRepository repeatingCorrelationGroupsRepository;
 
     private ObjectMapper objectMapper;
 

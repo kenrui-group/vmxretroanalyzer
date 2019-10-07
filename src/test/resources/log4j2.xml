@@ -16,7 +16,7 @@
         </RollingRandomAccessFile>
     </Appenders>
     <Loggers>
-        <Logger name="org.springframework" level="error" additivity="false" includeLocation="false">
+        <Logger name="org.springframework" level="trace" additivity="false" includeLocation="false">
             <AppenderRef ref="RollingRandomAccessFileNLP"/>
             <AppenderRef ref="console"/>
         </Logger>
@@ -24,7 +24,7 @@
             <AppenderRef ref="RollingRandomAccessFile"/>
             <AppenderRef ref="console"/>
         </Logger>
-        <Root level="error" includeLocation="false">
+        <Root level="trace" includeLocation="false">
             <AppenderRef ref="console"/>
         </Root>
     </Loggers>

@@ -20,8 +20,8 @@ public class RetroReaderPointIds implements IRetroReaderPointIds {
     private DecodedMessages decodedMessages;
     private MessageContents messageContents;
 
-    public RetroReaderPointIds(String filename, String delimiter, String point, String time, String id, PointRespository pointRespository) {
-        this.file = new File(filename);
+    public RetroReaderPointIds(File file, String delimiter, String point, String time, String id, PointRespository pointRespository) {
+        this.file = file;
         this.delimiter = delimiter;
         this.point = point;
         this.time = time;

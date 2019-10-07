@@ -16,10 +16,9 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 //https://spring.io/blog/2016/04/15/testing-improvements-in-spring-boot-1-4
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(properties = "spring.main.allow-bean-definition-overriding=true")
 public class RetroReaderCorrelationTest extends AbstractTestNGSpringContextTests {
 
     // SUTs
@@ -27,6 +26,8 @@ public class RetroReaderCorrelationTest extends AbstractTestNGSpringContextTests
     private RetroReaderCorrelationIds retroReaderCorrelationIds;
     @Autowired
     private RetroReaderPointIds retroReaderPointIds;
+
+    @Autowired private RetroReaderTestGenerator retroReaderTestGenerator;
 
     private List<TimeCorrelationId> listOfIdsOneTickToMultipleQuotes;
     private List<TimeCorrelationId> listOfIdsOneTickToOneQuote;
@@ -38,13 +39,11 @@ public class RetroReaderCorrelationTest extends AbstractTestNGSpringContextTests
 
     private List<TimePointId> listOfIdsPointIds;
 
-    private RetroReaderTestGenerator retroReaderTestGenerator;
 
     private ObjectMapper objectMapper;
 
     @BeforeClass
     public void setup() {
-        retroReaderTestGenerator = new RetroReaderTestGenerator();
         retroReaderTestGenerator.generateCorrelationIds();
 
         lineCountCorrelationIds = retroReaderTestGenerator.getLineCountCorrelationIds();
@@ -57,7 +56,7 @@ public class RetroReaderCorrelationTest extends AbstractTestNGSpringContextTests
         retroReaderCorrelationIds.parseFile();
 
 
-        retroReaderTestGenerator = new RetroReaderTestGenerator();
+
         retroReaderTestGenerator.generatePointIds();
 
         lineCountPointIds = retroReaderTestGenerator.getLineCountPointIds();

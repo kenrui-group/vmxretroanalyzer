@@ -20,8 +20,10 @@ public class RetroReaderCorrelationIds implements IRetroReaderCorrelationIds {
     private DecodedMessages decodedMessages;
     private MessageContents messageContents;
 
-    public RetroReaderCorrelationIds(String filename, String delimiter, String point, String time, String id1, String id2, CorrelationRepository correlationRepository) {
-        this.file = new File(filename);
+
+
+    public RetroReaderCorrelationIds(File file, String delimiter, String point, String time, String id1, String id2, CorrelationRepository correlationRepository) {
+        this.file = file;
         this.delimiter = delimiter;
         this.point = point;
         this.time = time;
